@@ -1,0 +1,37 @@
+<div class='control-group form-row field-slug {% if line.fields|length_is:'1' and line.errors %} error errors{% endif %}'>
+    <div>
+        <div class="form-row{% for adminfield in line %} {{ adminfield.field.name }}{% if adminfield.field.is_hidden %} cp-has-hidden-field{% endif %}{% endfor %}">
+                {% for adminfield in line %}{% if not adminfield.field.is_hidden %}
+                    <div{% if not line.fields|length_is:'1' %} class="field-box{% if not adminfield.is_readonly and adminfield.errors %} errors{% endif %}"{% endif %}>
+                        {% if adminfield.is_checkbox %}
+                            <div class='control-label'>
+                            {{ adminfield.label_tag }}
+                            </div>
+                            <div class='controls'>{% if adminfield.errors %}
+                                <div class='inline error errors'>
+                                {% endif %}{{ adminfield.field }}{% if adminfield.errors %}<span class='help-inline'>{{ adminfield.errors }}</span></div>{% endif %}</div>
+                        {% else %}
+                            <div class='control-label'>
+                                {{ adminfield.label_tag }}
+                            </div>
+                            <div class='controls'>
+                                {% if adminfield.errors %}
+                                    <div class='inline error errors'>
+                                {% endif %}
+                                {% if adminfield.is_readonly %}
+                                    <p>{{ adminfield.contents }}</p>
+                                {% else %}
+                                    {{ adminfield.field }}{% if adminfield.errors %}<span class='help-inline'>{{ adminfield.errors }}</span></div>{% endif %}
+                                {% endif %}
+
+                            </div>
+                        {% endif %}
+                        {% if adminfield.field.help_text %}
+                            <p class="help">{{ adminfield.field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
