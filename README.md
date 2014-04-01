@@ -1,6 +1,6 @@
 Fluent Suit
 ===========
-Basically just a simple collection of template overrides to get fluent_pages/content (including Parler) to play nice with Django Suit.
+Basically just a simple collection of template overrides to get fluent_pages/content (including Parler) to play nice with Django Suit. Note: This collection is a work in progress as issues are uncovered.
 
 ###Assumed versions
 
